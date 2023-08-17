@@ -55,7 +55,7 @@ text = fp1.read()
 fp1.close() # Close file
 
 #sentence = "Programmers program with programming languages"
-sent_text = sent_tokenize(text) # this gives us a list of sentences
+#sent_text = sent_tokenize(text) # this gives us a list of sentences
 
 # out_text = sent_text
 # for keys in phrasal_hash:
@@ -73,7 +73,7 @@ sent_text = sent_tokenize(text) # this gives us a list of sentences
 
 
 out_text = []
-for sentence in sent_text:
+#for sentence in sent_text:
 	#words = word_tokenize(sentence)
 
 	#print(sentence)
@@ -83,22 +83,23 @@ for sentence in sent_text:
 
 	#stemmed_sentence = reduce(lambda x, y: x + " " + wordnet_lemmatizer.lemmatize(y), words, "")
 
-	stemmed_sentence = sentence#.lower()
-	flag = 0
-	for keys in phrasal_hash:
-		if(re.search(r'\b' + keys + r'\b', stemmed_sentence, re.IGNORECASE)):
-			flag = 1
-			stemmed_sentence = re.sub(r'\b' +keys + r'\b', r'['+ keys + r']', stemmed_sentence,flags=re.IGNORECASE)
-	for keys in idiom_hash:
-		if(re.search(r'\b' + keys + r'\b', stemmed_sentence, re.IGNORECASE)):
-			flag = 1
-			stemmed_sentence = re.sub(r'\b' +keys + r'\b', r'[['+ keys + r']]', stemmed_sentence, flags=re.IGNORECASE)
-	#if(flag == 0):
-	out_text.append(stemmed_sentence)
+stemmed_sentence = text#.lower()
+flag = 0
+for keys in phrasal_hash:
+	if(re.search(r'\b' + keys + r'\b', stemmed_sentence, re.IGNORECASE)):
+		flag = 1
+		stemmed_sentence = re.sub(r'\b' +keys + r'\b', r'['+ keys + r']', stemmed_sentence,flags=re.IGNORECASE)
+for keys in idiom_hash:
+	if(re.search(r'\b' + keys + r'\b', stemmed_sentence, re.IGNORECASE)):
+		flag = 1
+		stemmed_sentence = re.sub(r'\b' +keys + r'\b', r'[['+ keys + r']]', stemmed_sentence, flags=re.IGNORECASE)
+print(stemmed_sentence)
+#if(flag == 0):
+	#out_text.append(stemmed_sentence)
 	#print(out_text)
 			#print("Sentence:|%s|Verb Phrase:|%s|" %(stemmed_sentence, keys))
 	#for w in words:
 		#print("Lemma for {} is {}".format(w, wordnet_lemmatizer.lemmatize(w)))  
-	print(stemmed_sentence)
+	#print(stemmed_sentence)
 
-print("\n".join(out_text))
+#print("\n".join(out_text))
