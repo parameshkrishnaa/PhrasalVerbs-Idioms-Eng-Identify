@@ -7,7 +7,7 @@ wordnet_lemmatizer = WordNetLemmatizer()
 from functools import reduce
 import json
 import sys
-import pysrt
+#import pysrt
 import re
 
 #stemmer = SnowballStemmer("english")
@@ -88,11 +88,11 @@ flag = 0
 for keys in phrasal_hash:
 	if(re.search(r'\b' + keys + r'\b', stemmed_sentence, re.IGNORECASE)):
 		flag = 1
-		stemmed_sentence = re.sub(r'\b' +keys + r'\b', r'['+ keys + r']', stemmed_sentence,flags=re.IGNORECASE)
+		stemmed_sentence = re.sub(r'\b' +keys + r'\b', r'<<'+ keys + r'>>', stemmed_sentence,flags=re.IGNORECASE)
 for keys in idiom_hash:
 	if(re.search(r'\b' + keys + r'\b', stemmed_sentence, re.IGNORECASE)):
 		flag = 1
-		stemmed_sentence = re.sub(r'\b' +keys + r'\b', r'[['+ keys + r']]', stemmed_sentence, flags=re.IGNORECASE)
+		stemmed_sentence = re.sub(r'\b' +keys + r'\b', r'##'+ keys + r'##', stemmed_sentence, flags=re.IGNORECASE)
 print(stemmed_sentence)
 #if(flag == 0):
 	#out_text.append(stemmed_sentence)

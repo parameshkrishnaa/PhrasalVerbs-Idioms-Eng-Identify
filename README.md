@@ -1,4 +1,6 @@
 # verb phrase identification
+### to run bag of words based program
+python3 rule_based.py tests/subtitles.txt > out.txt
 
 ### to run
 python3 eng_spacy.py input.srt
